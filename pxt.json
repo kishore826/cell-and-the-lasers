@@ -1,5 +1,6 @@
 {
     "name": "Cell and the lasers",
+    "version": "0.0.1",
     "description": "Cell and the Lasers\nMade by Abhinav\nscore 500 to win",
     "dependencies": {
         "device": "*",
