@@ -336,6 +336,10 @@ let b = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Food)
 b.setPosition(150, 100)
+control.simmessages.send(
+    "cell-lasers",
+    Buffer.fromUTF8("TEST_FROM_MAKECODE")
+)
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
         info.changeScoreBy(1)
