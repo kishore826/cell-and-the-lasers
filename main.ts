@@ -341,6 +341,7 @@ let b = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Food)
 b.setPosition(150, 100)
+
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
         info.changeScoreBy(1)
