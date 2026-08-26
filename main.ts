@@ -24,6 +24,11 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         X = X + 70
         Cell.setPosition(X, 100)
         music.play(music.melodyPlayable(music.jumpUp), music.PlaybackMode.UntilDone)
+
+        control.simmessages.send(
+            "cell-lasers",
+            Buffer.fromUTF8("TEST_SCORE_123")
+        )
     }
 })
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -336,10 +341,6 @@ let b = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Food)
 b.setPosition(150, 100)
-control.simmessages.send(
-    "cell-lasers",
-    Buffer.fromUTF8("TEST_FROM_MAKECODE")
-)
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
         info.changeScoreBy(1)
