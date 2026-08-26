@@ -20,6 +20,10 @@ controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     }
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    control.simmessages.send(
+        "cell-lasers",
+        Buffer.fromUTF8("TEST_SCORE_123")
+    )
     if (X == 80 || X == 10) {
         X = X + 70
         Cell.setPosition(X, 100)
@@ -336,10 +340,7 @@ let b = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Food)
 b.setPosition(150, 100)
-control.simmessages.send(
-    "cell-lasers",
-    Buffer.fromUTF8("TEST_FROM_MAKECODE")
-)
+
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
         info.changeScoreBy(1)
@@ -442,3 +443,4 @@ game.onUpdateInterval(500, function () {
         T = T + 0.5
     }
 })
+
