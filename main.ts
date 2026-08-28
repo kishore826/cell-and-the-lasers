@@ -2,6 +2,16 @@ namespace SpriteKind {
     export const Ground = SpriteKind.create()
     export const P = SpriteKind.create()
 }
+function sendScoreToWebsite() {
+    const message = JSON.stringify({
+        score: info.score()
+    })
+
+    control.simmessages.send(
+        "cell-lasers",
+        Buffer.fromUTF8(message)
+    )
+}
 controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
     if (X == 150 || X == 80) {
         X = X - 70
@@ -62,6 +72,7 @@ sprites.onOverlap(SpriteKind.P, SpriteKind.Player, function (sprite, otherSprite
         music.play(music.melodyPlayable(music.powerUp), music.PlaybackMode.UntilDone)
         game.splash("High-score = " + info.score())
     }
+    sendScoreToWebsite()
     game.gameOver(false)
 })
 let T = 0
@@ -336,10 +347,6 @@ let b = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Food)
 b.setPosition(150, 100)
-control.simmessages.send(
-    "cell-lasers",
-    Buffer.fromUTF8("TEST_FROM_MAKECODE")
-)
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
         info.changeScoreBy(1)
@@ -351,6 +358,7 @@ forever(function () {
         isAlive = false
         game.splash("You have demon reflexes")
         game.splash("Made by MrLegend649", " Visit my channel on yt")
+        sendScoreToWebsite()
         game.gameOver(true)
     }
 })
