@@ -4,13 +4,14 @@
 
 addSimMessageHandler("cell-lasers", function (data) {
     try {
-        console.log("MAKECODE MESSAGE RECEIVED:", data);
+        console.log("MAKECODE SCORE:", data);
 
-        // Send the message from the GitHub Pages game
-        // to the outer game.html iframe.
+        const message = JSON.stringify(data);
+
         window.parent.postMessage({
-            type: "cell-lasers-score",
-            score: data.score
+            type: "messagepacket",
+            channel: "cell-lasers",
+            data: new TextEncoder().encode(message)
         }, "*");
 
     } catch (error) {
