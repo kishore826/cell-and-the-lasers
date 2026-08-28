@@ -2,7 +2,6 @@ namespace SpriteKind {
     export const Ground = SpriteKind.create()
     export const P = SpriteKind.create()
 }
-
 function sendScoreToWebsite() {
     const message = JSON.stringify({
         score: info.score()
@@ -348,6 +347,7 @@ let b = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Food)
 b.setPosition(150, 100)
+
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
         info.changeScoreBy(1)
