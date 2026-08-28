@@ -2,6 +2,7 @@ namespace SpriteKind {
     export const Ground = SpriteKind.create()
     export const P = SpriteKind.create()
 }
+
 function sendScoreToWebsite() {
     const message = JSON.stringify({
         score: info.score()
