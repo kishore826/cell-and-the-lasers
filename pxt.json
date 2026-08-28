@@ -30,5 +30,6 @@
     "supportedTargets": [
         "arcade"
     ],
-    "preferredEditor": "blocksprj"
+    "preferredEditor": "blocksprj",
+    "disableLargeTargetTemplateFiles": true
 }
