@@ -338,7 +338,9 @@ let b = sprites.create(img`
 b.setPosition(150, 100)
 control.simmessages.send(
     "cell-lasers",
-    Buffer.fromUTF8("TEST_FROM_MAKECODE")
+    Buffer.fromUTF8(JSON.stringify({
+        score: info.score()
+    }))
 )
 game.onUpdateInterval(1000, function () {
     if (isAlive == true) {
